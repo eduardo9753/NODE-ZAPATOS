@@ -1,0 +1,114 @@
+/*ESTILOS GENERALES*/
+*,*::before,*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+ul{list-style: none;}
+a{text-decoration: none;}
+
+.centrar {margin:  auto auto; text-align: center;}
+.relative{position: relative;}
+
+
+
+/*ESTILOS GRID ZAPATOS*/
+.content-grid-zapatos{
+  display: grid;
+  grid-template-columns: repeat(2,2fr);
+}
+.position-middle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    transform: translate(-50%,-50%);
+}
+.fondo-plate{
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+.btn-grid{
+    display: inline-block;
+    background-color: rgba(238, 5, 5, 0.7);
+    width: 100%;
+    text-decoration: none;
+    color: yellow;
+    padding: 10px;
+    border-radius: 20px;
+}
+.btn-grid:hover{
+    background-color: rgba(238, 5, 5, 0.8);
+    color: white;
+}
+
+/*ESTILOS GALERY*/
+.content-grid-galery{
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(4,1fr);
+}
+.content-grid-galery .imagen-galery{ height: 280px; cursor: pointer;}
+
+.content-grid-galery .box-img{overflow: hidden;}
+.content-grid-galery .imagen-galery{transition: all .2s ease-in-out;}
+.content-grid-galery .imagen-galery:hover{transform: scale(1.1);}
+
+.content-zapato{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.7);
+    display: none;
+    z-index: 1000;
+}
+.content-zapato .agregar-imagen{
+    padding-top: 5%;
+    width: 80%;
+    height: 90%;
+}
+.content-zapato .close{
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+}
+.show{ display: block;}
+
+
+/*ESTILOS FOOTER*/
+.footer li a i{
+    background-color: rgba(255,255,255,0.7);
+    color: rgba(238, 5, 5, 0.7);
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    line-height: 2;
+    margin-top: 20px;
+}
+.footer li a i:hover{color: #000;}
+
+
+/*ESRTILOS MAPA*/
+#map{
+    margin-top: 50px;
+    width: 100%;
+    height: 350px;
+    border: 1px solid blue;
+}

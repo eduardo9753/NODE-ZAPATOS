@@ -1,0 +1,27 @@
+.fondo-header { background-color: rgba(0, 0, 0, 0.8);}
+
+.parallax{
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header{ height: 70vh;background-image: url(../img/fondo-zapato.jpg);}
+
+.fixed{ position: fixed;width: 100%;z-index: 999;}
+
+/*ESTILOS BOTON CLIENTE*/
+.btn-input{
+    display: inline-block;
+    width: 100%;
+    background-color: rgba(17, 6, 136, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+}
+.btn-input:hover{ color: yellow; text-decoration: none;background-color: rgba(17, 6, 136, 0.8);}

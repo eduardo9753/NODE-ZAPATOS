@@ -1,0 +1,80 @@
+<section>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <form action="/shoes/edit/{{dataZapato.id}}?_method=PUT" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="_method" value="PUT">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div>
+                                <div class="form-group">
+                                    <label for="">New Foto</label>
+                                    <input type="hidden" name="imgDelete" value="{{dataZapato.filename}}">
+                                    <input type="file" name="fotoZapato" placeholder="IMG" class="form-control"
+                                        autofocus>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="">Precio</label>
+                                    <input type="text" name="precio" placeholder="costo valor Numerico"
+                                        class="form-control" value="{{dataZapato.precio}}">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="">Color</label>
+                                    <input type="text" name="color" value="{{dataZapato.color}}" placeholder="color"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="">Cantidad</label>
+                                    <input type="text" name="cantidad" value="{{dataZapato.cantidad}}"
+                                        placeholder="cantidad" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Estilo</label>
+                                <select name="cboEstilo" class="form-control" id="">
+                                    {{#each dataEstilo}}
+                                    <option value="{{id}}">{{estilo}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Talla</label>
+                                <select name="cboTalla" class="form-control" id="">
+                                    {{#each dataTalla}}
+                                    <option value="{{id}}">{{talla}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Genero</label>
+                                <select name="cboGenero" class="form-control" id="">
+                                    {{#each dataGenero}}
+                                    <option value="{{id}}">{{genero}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="my-3">
+                                <div class="form-group">
+                                    <input type="submit" name="" value="Update" class="btn-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <p>Foto Actual</p>
+                            <img src="/{{dataZapato.path}}" alt="">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

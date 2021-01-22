@@ -1,0 +1,74 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mx-auto my-4">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/shoes/addForm" method="POST" enctype="multipart/form-data">
+                            <div>
+                                <div class="form-group">
+                                    <label for="">Foto</label>
+                                    <input type="file" name="fotoZapato" placeholder="IMG" class="form-control" autofocus>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="">Precio</label>
+                                    <input type="text" name="precio" placeholder="costo valor Numerico"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="">Color</label>
+                                    <input type="text" name="color" placeholder="color" class="form-control">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="">Cantidad</label>
+                                    <input type="text" name="cantidad" placeholder="cantidad" class="form-control">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="">Estilo</label>
+                                    <select name="cboEstilo" class="form-control" id="">
+                                        {{#each dataEstilo}}
+                                        <option value="{{id}}">{{estilo}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="">Talla</label>
+                                    <select name="cboTalla" class="form-control" id="">
+                                        {{#each dataTalla}}
+                                        <option value="{{id}}">{{talla}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="">Genero</label>
+                                    <select name="cboGenero" class="form-control" id="">
+                                        {{#each dataGenero}}
+                                        <option value="{{id}}">{{genero}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="my-3">
+                                <div class="form-group">
+                                    <input type="submit" name="" value="Registrar" class="btn-input">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

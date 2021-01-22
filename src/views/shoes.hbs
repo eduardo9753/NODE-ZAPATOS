@@ -1,0 +1,36 @@
+<section>
+    <div class="container">
+        <div class="row">
+            {{#each dataShoes}}
+            <div class="col-md-4 my-5">
+                <div class="card">
+                    <div class="card-header">
+                        <img src="/{{path}}" alt="">
+                    </div>
+                    <div class="card-body">
+                        <p>Peso <i class='bx bxs-magic-wand'></i> : {{size}} (kb | Mb)</p>
+                        <p>Precio <i class='bx bxl-bitcoin'></i> : {{precio}} <i class='bx bxs-dollar-circle' style='color:#1dc232'></i></p>
+                        <p>Color <i class='bx bxs-comment-edit'></i> : {{color}}</p>
+                        <p>Cantidad <i class='bx bxs-comment-edit'></i> : {{cantidad}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <p>Upload <i class='bx bxs-calendar-edit'></i> : {{timeago created_at}}</p>
+                        <a href="/shoe/view/{{id}}" class="btn-input">Ver a Detalle</a>
+                    </div>
+                </div>
+            </div>
+            {{else}}
+            <div>
+                <div class="col-md-4 mx-auto mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Aun no han publicado Nada :)</p>
+                            <a href="/users/signup" class="btn-input">Quiero Publicar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,34 @@
+<header class="header parallax">
+  <nav class="fixed navbar navbar-expand-lg navbar-dark fondo-header">
+    <div class="container">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          {{#if user}}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Actions
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="/shoes/list">List</a></li>
+              <li><a class="dropdown-item" href="/shoes/add">Register Shoe</a></li>
+              <li><a class="dropdown-item" href="/users/logout">Exit</a></li>
+            </ul>
+          </li>
+          {{else}}
+          <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/shoes">Zapatos</a></li>
+          <li class="nav-item"><a class="nav-link" aria-current="page" href="/mapa">Mapa</a></li>
+          <li class="nav-item"><a class="nav-link" aria-current="page" href="/users/signin">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="/users/signup">Registrarse</a></li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

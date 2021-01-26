@@ -44,9 +44,9 @@ VISTA USUARIO:
 - 2
 ![regitro zapato](https://user-images.githubusercontent.com/68178186/105882630-dfa80200-5fd3-11eb-9352-3bdbff58961c.PNG)
 - 3
-![zapato-update](https://user-images.githubusercontent.com/68178186/105883491-eaaf6200-5fd4-11eb-891a-b56a05988bd6.PNG)
+![zapato-update](https://user-images.githubusercontent.com/68178186/105884053-8ccf4a00-5fd5-11eb-8fc5-1d19e9a93948.PNG)
 - 4
-![zapato-update-LIST](https://user-images.githubusercontent.com/68178186/105883544-fac74180-5fd4-11eb-9e25-8c3ffcfc033b.PNG)
+![zapato-update-LIST](https://user-images.githubusercontent.com/68178186/105884066-8e990d80-5fd5-11eb-9570-91c1527f6af6.PNG)
 
 
 

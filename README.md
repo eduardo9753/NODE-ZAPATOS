@@ -42,10 +42,12 @@ VISTA USUARIO:
 - 1
 ![login-into](https://user-images.githubusercontent.com/68178186/105248760-f7e7cf00-5b44-11eb-8042-4fccf3f90367.PNG)
 - 2
-![regitro zapato](https://user-images.githubusercontent.com/68178186/105882630-dfa80200-5fd3-11eb-9352-3bdbff58961c.PNG)
+![registroZapato](https://user-images.githubusercontent.com/68178186/105884325-de77d480-5fd5-11eb-9d4b-5314763c6ba3.PNG)
 - 3
-![zapato-update](https://user-images.githubusercontent.com/68178186/105884053-8ccf4a00-5fd5-11eb-8fc5-1d19e9a93948.PNG)
+![regitro zapato](https://user-images.githubusercontent.com/68178186/105882630-dfa80200-5fd3-11eb-9352-3bdbff58961c.PNG)
 - 4
+![zapato-update](https://user-images.githubusercontent.com/68178186/105884053-8ccf4a00-5fd5-11eb-8fc5-1d19e9a93948.PNG)
+- 5
 ![zapato-update-LIST](https://user-images.githubusercontent.com/68178186/105884066-8e990d80-5fd5-11eb-9570-91c1527f6af6.PNG)
 
 

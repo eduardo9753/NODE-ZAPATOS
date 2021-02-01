@@ -17,5 +17,5 @@ router.put('/shoe/edit/:id' , isAuthenticated , zapatoController.update);//UPDAT
 
 router.delete('/shoe/delete/:id' , isAuthenticated ,zapatoController.delete);//DELETE SHOE
 
-
+//EXPORTAMOS
 module.exports = router;

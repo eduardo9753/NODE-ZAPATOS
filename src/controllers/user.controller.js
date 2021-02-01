@@ -13,9 +13,11 @@ userController.signupFormAdd = passport.authenticate('local.signup', {
     failureFlash : true        
 });
 
+
 userController.profile = (req, res) =>{
     res.render('users/profile.hbs');
 }
+
 
 userController.signin = (req, res) => {//VIEWS FORM SIGNIN "LOGEO DE USUARIOS"
     res.render('users/signin.hbs');

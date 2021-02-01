@@ -4,6 +4,7 @@ const router = Router();
 //CONTROLADOR INDEX
 const indexController = require('../controllers/index.controller');
 
+
 //MANEJO DE LAS VIEWS
 router.get('/' , indexController.index);//INDEX O PAGINA PRINCIPAL
 router.get('/shoes/:page' , indexController.shoes);//DATA ZAPATO

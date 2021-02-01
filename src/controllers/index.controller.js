@@ -21,7 +21,7 @@ indexController.shoes = async (req, res) => {
         const count = JSON.parse(JSON.stringify(countZapato[0]['total']));
         console.log('data ZAPATO shoes:', dataShoes);
         res.render('shoes.hbs', { 
-            dataShoes : dataShoes ,
+            dataShoes : dataShoes,
             current   : pagina ,
             paginas   : Math.ceil(count / verPorPagina)
         });

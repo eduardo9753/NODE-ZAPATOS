@@ -11,6 +11,7 @@ hbshelpers.firtPagina = (current) => {
     }
 }
 
+//PAGINACION CLIENTE
 hbshelpers.paginationCliente = (current , paginas) => {
     let list = [];
     let i = (Number(current) > 5 ? Number(current) - 4 : 1);
@@ -34,6 +35,7 @@ hbshelpers.paginationCliente = (current , paginas) => {
     return lista;
 }
 
+//PAGINACION USER
 hbshelpers.paginationUser = (current , paginas) => {
     let list = [];
     let i = (Number(current) > 5 ? Number(current) - 4 : 1);

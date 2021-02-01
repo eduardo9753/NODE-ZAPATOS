@@ -32,7 +32,7 @@ zapatoController.formAdd = async (req, res) => {
         zapato.setFoto      = req.file.originalname;    //NOMBRE DE LA FOTO 
         zapato.setMimetype  = req.file.mimetype;        //TIPO DE FOTO O IMG
         zapato.setFilename  = req.file.filename;        //NOMBRE ENCRYPTADO
-        zapato.setPath      = 'shoes/' + req.file.filename;//CUANDO SE RECORRA LAS IMG BUSCARA ESTA RUTA DEL "PATH"
+        zapato.setPath      = 'Uploads/' + req.file.filename;//CUANDO SE RECORRA LAS IMG BUSCARA ESTA RUTA DEL "PATH"
         zapato.setSize      = req.file.size;            //TAMAÑO DE LA FOTO
         zapato.setPrecio    = req.body.precio;          //CAJA DE TEXTO
         zapato.setColor     = req.body.color;           //CAJA DE TEXTO
@@ -46,10 +46,10 @@ zapatoController.formAdd = async (req, res) => {
             zapato.getCantidad, zapato.getIdUsuario, zapato.getDBOEstilo, zapato.getDBOTalla, zapato.getDBOGenero]);
         if (correct) {
             req.flash('message_success', 'SHOE SAVED CORRECTED');
-            res.redirect('/shoes/list');
+            res.redirect('/shoe/list');
         } else {
             req.flash('message_danger', 'ERROR');
-            res.redirect('/shoes/list');
+            res.redirect('/shoe/list');
         }
     } catch (error) {
         console.log(error);
@@ -81,7 +81,7 @@ zapatoController.update = async (req, res) => {
             zapato.setFoto      = req.file.originalname;  //NOMBRE DE LA FOTO DE LA IMG
             zapato.setMimetype  = req.file.mimetype;      //TIPO DE FOTO O IMG
             zapato.setFilename  = req.file.filename;      //NOMBRE ENCRYPTADO DE LA IMG
-            zapato.setPath      = 'shoes/' + req.file.filename;//CUANDO SE RECORRA LAS IMG BUSCARA ESTA RUTA DEL "PATH"
+            zapato.setPath      = 'Uploads/' + req.file.filename;//CUANDO SE RECORRA LAS IMG BUSCARA ESTA RUTA DEL "PATH"
             zapato.setSize      = req.file.size;          //VALOR REQ.FILE :tamano de la img : 345kv
             zapato.setPrecio    = req.body.precio;        //CAJA DE TEXTO
             zapato.setColor     = req.body.color;         //CAJA DE TEXTO
@@ -95,9 +95,9 @@ zapatoController.update = async (req, res) => {
                 [zapato.getFoto, zapato.getMimetype, zapato.getFilename, zapato.getPath, zapato.getSize, zapato.getPrecio, zapato.getColor,
                 zapato.getCantidad, zapato.getIdUsuario, zapato.getDBOEstilo, zapato.getDBOTalla, zapato.getDBOGenero, zapato.getIdZapato]);
             if (correct) {
-                await unlink(pathUpdate.resolve('./src/public/shoes/' + req.body.imgDelete));
+                await unlink(pathUpdate.resolve('./src/public/Uploads/' + req.body.imgDelete));
                 req.flash('message_success', 'SHOE DELETE CORRECTED');
-                res.redirect('/shoes/list');
+                res.redirect('/shoe/list');
             }
         } else if (typeof req.file === 'undefined') {
             const dataUpdate = await pool.query('SELECT * FROM dbozapato WHERE id=?', [id]);
@@ -105,7 +105,7 @@ zapatoController.update = async (req, res) => {
             zapato.setFoto      = dataUpdate[0].foto;      //NOMBRE DE LA FOTO DE LA IMG DE LA BD
             zapato.setMimetype  = dataUpdate[0].mimetype;  //TIPO DE FOTO O IMG DE LA BD
             zapato.setFilename  = dataUpdate[0].filename;  //NOMBRE ENCRYPTADO DE LA IMG DE LA BD
-            zapato.setPath      = req.body.foto_actual;    //USAMOS LA RUTA ORIGINAL SI NO SE ACTUALIZA
+            zapato.setPath      = req.body.foto_actual;    //INPUT USAMOS LA RUTA ORIGINAL SI NO SE ACTUALIZA
             zapato.setSize      = dataUpdate[0].size;      //CAJA DE TEXTO
             zapato.setPrecio    = req.body.precio;         //CAJA DE TEXTO
             zapato.setColor     = req.body.color;          //CAJA DE TEXTO
@@ -120,7 +120,7 @@ zapatoController.update = async (req, res) => {
                 zapato.getCantidad, zapato.getIdUsuario, zapato.getDBOEstilo, zapato.getDBOTalla, zapato.getDBOGenero, zapato.getIdZapato]);
             if (correct) {
                 req.flash('message_success', 'SHOE DELETE CORRECTED');
-                res.redirect('/shoes/list');
+                res.redirect('/shoe/list');
             }
         }
     } catch (error) {
@@ -131,9 +131,20 @@ zapatoController.update = async (req, res) => {
 zapatoController.list = async (req, res) => {
     try {
         console.log('LIST USER', req.user);
-        const dataZapato = await pool.query('SELECT * FROM dbozapato WHERE user_id=?', [req.user.id]);
+        let verPorPagina = 9;
+        let pagina = req.params.page || 1;
+        let offSet = ((pagina - 1)*verPorPagina);
+        console.log('pagina: ', pagina);
+        console.log('offSet: ',offSet);
+        const dataZapato = await pool.query('SELECT * FROM dbozapato WHERE user_id=?  LIMIT ? OFFSET ?', [req.user.id,verPorPagina,offSet]);
+        const countZapato = await pool.query('SELECT COUNT(*) AS total FROM dbozapato');
+        const count = JSON.parse(JSON.stringify(countZapato[0]['total']));      
         console.log('DATA SHOES LIST :', dataZapato);
-        res.render('zapatos/list.hbs', { dataZapato: dataZapato });
+        res.render('zapatos/list.hbs', { 
+            dataZapato : dataZapato,
+            current    : pagina,
+            paginas   : Math.ceil(count / verPorPagina)
+         });
     } catch (error) {
         console.log(error);
     }
@@ -146,7 +157,7 @@ zapatoController.delete = async (req, res) => {
         const { id }  = req.params;
         const correct = await pool.query('DELETE FROM dbozapato WHERE id =?', [id]);
         if (correct) {
-            await unlink(pathDelete.resolve('./src/public/shoes/' + req.body.imgDelete));
+            await unlink(pathDelete.resolve('./src/public/Uploads/' + req.body.imgDelete));
             req.flash('message_success', 'SHOE DELETE CORRECTED');
             res.redirect('/shoes/list');
         } else {

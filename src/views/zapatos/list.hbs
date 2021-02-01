@@ -9,20 +9,21 @@
                     </div>
                     <div class="card-body">
                         <p>Peso <i class='bx bxs-magic-wand'></i> : {{size}} (kb | Mb)</p>
-                        <p>Precio <i class='bx bxl-bitcoin'></i> : {{precio}} <i class='bx bxs-dollar-circle' style='color:#1dc232'></i></p>
+                        <p>Precio <i class='bx bxl-bitcoin'></i> : {{precio}} <i class='bx bxs-dollar-circle'
+                                style='color:#1dc232'></i></p>
                         <p>Color <i class='bx bxs-comment-edit'></i> : {{color}}</p>
                         <p>Cantidad <i class='bx bxs-comment-edit'></i> : {{cantidad}}</p>
                     </div>
                     <div class="card-footer">
                         <p>Upload <i class='bx bxs-calendar-edit'></i> : {{timeago created_at}}</p>
-                        <form action="/shoes/delete/{{id}}?_method=DELETE" method="POST">
+                        <form action="/shoe/delete/{{id}}?_method=DELETE" method="POST">
                             <div>
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="imgDelete" value="{{filename}}">
                                 <input type="submit" value="Delete" class="btn-input">
                             </div>
                         </form>
-                        <a href="/shoes/edit/{{id}}" class="my-2 btn btn-success d-block">Editar Zapato</a>
+                        <a href="/shoe/edit/{{id}}" class="my-2 btn btn-success d-block">Editar Zapato</a>
                     </div>
                 </div>
             </div>
@@ -32,12 +33,23 @@
                     <div class="card">
                         <div class="card-body">
                             <p>Aun no has publicado Nada :)</p>
-                            <a href="/shoes/add" class="btn-input">Quiero Publicar</a>
+                            <a href="/shoe/form" class="btn-input">Quiero Publicar</a>
                         </div>
                     </div>
                 </div>
             </div>
             {{/each}}
+            {{#if paginas}} <!--PAGINATION-->
+            <nav class="Page navigation example">
+                <ul class="pagination">
+                    {{{firtPagina current}}}
+                    {{#if user}}
+                       {{{paginationUser current paginas}}}
+                    {{/if}}
+                    {{{lastPagina current paginas}}}
+                </ul>
+            </nav>
+            {{/if}}         <!--END-PAGINATION-->
         </div>
     </div>
 </section>

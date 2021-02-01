@@ -19,6 +19,9 @@ const user           = require('./routers/user.router');
 const shoe           = require('./routers/zapatos.router');
 const { database }   = require('./database/keys');
 require('./config/passport');//PARA VER EL MENSAJE DE LA BASE DE DATOS LLAMAMOS A POOL
+const { isAuthenticated , timeago } = require('./lib/helpers');
+const { firtPagina , paginationCliente , paginationUser , lastPagina } = require('./lib/handlebars');
+
 
 //INICIANDO SOCKET IO
 const server = Http.createServer(app);
@@ -34,10 +37,11 @@ app.engine('.hbs' , exphbs({
     defaultLayout   : 'main',
     layoutsDir      : path.join(app.get('views'), 'layout'),
     partialsDir     : path.join(app.get('views'), 'partials'),
-    extname         : '.hbs',
-    helpers         : require('./lib/helpers') //PARRA EL FORMATO DE FECHAS LO HACEMOS PUBLICO
+    extname         : '.hbs',             //PARRA EL FORMATO DE FECHAS LO HACEMOS PUBLICO
+    helpers         : { isAuthenticated , timeago , firtPagina , paginationCliente , paginationUser , lastPagina }
 }));
 app.set('view engine' , '.hbs');
+
 
 //MIDDLEWARES
 app.use(methodOverride('_method'));//PUT Y DELETE
@@ -55,14 +59,14 @@ app.use(passport.session());   //INICIANDO PASSPORT
 app.use(flash());//PARA LOS MENSAJES
 
 const storeZapato = multer.diskStorage({
-    destination : path.join(__dirname , '/public/shoes/'),
+    destination : path.join(__dirname , '/public/Uploads/'),
     filename : (req , file , cb , filename) => {
         cb(null , uuidv4() + path.extname(file.originalname).toLowerCase());
     }
 });
 const zapatoUpload = multer({ 
     storage : storeZapato,
-    dest    : path.join(__dirname , '/public/shoes/')
+    dest    : path.join(__dirname , '/public/Uploads/')
 }).single('fotoZapato');
 app.use(zapatoUpload);
 

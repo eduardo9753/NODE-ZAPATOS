@@ -9,7 +9,8 @@
                     </div>
                     <div class="card-body">
                         <p>Peso <i class='bx bxs-magic-wand'></i> : {{size}} (kb | Mb)</p>
-                        <p>Precio <i class='bx bxl-bitcoin'></i> : {{precio}} <i class='bx bxs-dollar-circle' style='color:#1dc232'></i></p>
+                        <p>Precio <i class='bx bxl-bitcoin'></i> : {{precio}} <i class='bx bxs-dollar-circle'
+                                style='color:#1dc232'></i></p>
                         <p>Color <i class='bx bxs-comment-edit'></i> : {{color}}</p>
                         <p>Cantidad <i class='bx bxs-comment-edit'></i> : {{cantidad}}</p>
                     </div>
@@ -31,6 +32,15 @@
                 </div>
             </div>
             {{/each}}
+            {{#if paginas}} <!--PAGINATION-->
+            <nav class="Page navigation example">
+                <ul class="pagination">
+                    {{{firtPagina current}}}
+                    {{{paginationCliente current paginas}}}
+                    {{{lastPagina current paginas}}}
+                </ul>
+            </nav>
+            {{/if}}         <!--END-PAGINATION-->
         </div>
     </div>
 </section>

@@ -1,7 +1,7 @@
 //PASSPORT PARA LA AUTENTICACION
 const passport = require('passport');
 
-const userController = { };
+const userController = {};
 
 //RENDER VIEW
 userController.signup = (req , res) => {//VIEW FORM SIGNUP "REGISTRO DE USUARIOS"

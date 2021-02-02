@@ -2,7 +2,7 @@ const hbshelpers = {};
 
 //FIRT PAGE
 hbshelpers.firtPagina = (current) => {
-    if(current==1){
+    if (current == 1) {
         let li = '<li class="page-item"><a class="page-link" href="#">Firt Page</a></li>';
         return li;
     } else {
@@ -12,21 +12,21 @@ hbshelpers.firtPagina = (current) => {
 }
 
 //PAGINACION CLIENTE
-hbshelpers.paginationCliente = (current , paginas) => {
+hbshelpers.paginationCliente = (current, paginas) => {
     let list = [];
     let i = (Number(current) > 5 ? Number(current) - 4 : 1);
-    if(i !== 1){
+    if (i !== 1) {
         let li = '<li class="page-item"><a class="page-link" href="#">.......</a></li>'
         list.push(li);
     }
-    for(; i <= (Number(current) + 4) && i <= paginas; i++){
-        if(i == current) {
-            let li = '<li class="page-item"><a class="page-link" href="'+i+'">'+i+'</a></li>';
+    for (; i <= (Number(current) + 4) && i <= paginas; i++) {
+        if (i == current) {
+            let li = '<li class="page-item"><a class="page-link" href="' + i + '">' + i + '</a></li>';
             list.push(li);
         } else {
-            let li = '<li class="page-item"><a class="page-link" href="/shoes/'+i+'">'+i+'</a></li>';
+            let li = '<li class="page-item"><a class="page-link" href="/shoes/' + i + '">' + i + '</a></li>';
             list.push(li);
-        } if(i == Number(current) + 4 && i < paginas){
+        } if (i == Number(current) + 4 && i < paginas) {
             let li = '<li class="page-item"><a class="page-link" href="#">.......</a></li>';
             list.push(li);
         }
@@ -36,21 +36,21 @@ hbshelpers.paginationCliente = (current , paginas) => {
 }
 
 //PAGINACION USER
-hbshelpers.paginationUser = (current , paginas) => {
+hbshelpers.paginationUser = (current, paginas) => {
     let list = [];
     let i = (Number(current) > 5 ? Number(current) - 4 : 1);
-    if(i !== 1){
+    if (i !== 1) {
         let li = '<li class="page-item"><a class="page-link" href="#">.......</a></li>'
         list.push(li);
     }
-    for(; i <= (Number(current) + 4) && i <= paginas; i++){
-        if(i == current) {
-            let li = '<li class="page-item"><a class="page-link" href="'+i+'">'+i+'</a></li>';
+    for (; i <= (Number(current) + 4) && i <= paginas; i++) {
+        if (i == current) {
+            let li = '<li class="page-item"><a class="page-link" href="' + i + '">' + i + '</a></li>';
             list.push(li);
         } else {
-            let li = '<li class="page-item"><a class="page-link" href="/shoe/list/'+i+'">'+i+'</a></li>';
+            let li = '<li class="page-item"><a class="page-link" href="/shoe/list/' + i + '">' + i + '</a></li>';
             list.push(li);
-        } if(i == Number(current) + 4 && i < paginas){
+        } if (i == Number(current) + 4 && i < paginas) {
             let li = '<li class="page-item"><a class="page-link" href="#">.......</a></li>';
             list.push(li);
         }
@@ -60,13 +60,14 @@ hbshelpers.paginationUser = (current , paginas) => {
 }
 
 
-hbshelpers.lastPagina = (current , paginas) => {
-   if(current==paginas){
-       let li = '<li clas="page-item"><a class="page-link" href="#">Last Page</a></li>';
-       return li;
-   } else {
-       
-   }
+hbshelpers.lastPagina = (current, paginas) => {
+    if (current == paginas) {
+        let li = '<li clas="page-item"><a class="page-link" href="#">Last Page</a></li>';
+        return li;
+    } else {
+        let li = '<li class="page-item"><a class="page-link href="' + paginas + '">Last Page</a></li>';
+        return li;
+    }
 }
 
 

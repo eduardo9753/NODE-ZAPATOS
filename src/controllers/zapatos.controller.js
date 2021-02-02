@@ -46,10 +46,10 @@ zapatoController.formAdd = async (req, res) => {
             zapato.getCantidad, zapato.getIdUsuario, zapato.getDBOEstilo, zapato.getDBOTalla, zapato.getDBOGenero]);
         if (correct) {
             req.flash('message_success', 'SHOE SAVED CORRECTED');
-            res.redirect('/shoe/list');
+            res.redirect('/shoe/list/1');
         } else {
             req.flash('message_danger', 'ERROR');
-            res.redirect('/shoe/list');
+            res.redirect('/shoe/list/1');
         }
     } catch (error) {
         console.log(error);
@@ -97,7 +97,7 @@ zapatoController.update = async (req, res) => {
             if (correct) {
                 await unlink(pathUpdate.resolve('./src/public/Uploads/' + req.body.imgDelete));
                 req.flash('message_success', 'SHOE DELETE CORRECTED');
-                res.redirect('/shoe/list');
+                res.redirect('/shoe/list/1');
             }
         } else if (typeof req.file === 'undefined') {
             const dataUpdate = await pool.query('SELECT * FROM dbozapato WHERE id=?', [id]);
@@ -120,7 +120,7 @@ zapatoController.update = async (req, res) => {
                 zapato.getCantidad, zapato.getIdUsuario, zapato.getDBOEstilo, zapato.getDBOTalla, zapato.getDBOGenero, zapato.getIdZapato]);
             if (correct) {
                 req.flash('message_success', 'SHOE DELETE CORRECTED');
-                res.redirect('/shoe/list');
+                res.redirect('/shoe/list/1');
             }
         }
     } catch (error) {
@@ -159,10 +159,10 @@ zapatoController.delete = async (req, res) => {
         if (correct) {
             await unlink(pathDelete.resolve('./src/public/Uploads/' + req.body.imgDelete));
             req.flash('message_success', 'SHOE DELETE CORRECTED');
-            res.redirect('/shoes/list');
+            res.redirect('/shoes/list/1');
         } else {
             req.flash('message_danger', 'SHOE DELETE INCORRECTED');
-            res.redirect('/shoes/list');
+            res.redirect('/shoes/list/1');
         }
     } catch (error) {
         console.log(error);

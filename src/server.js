@@ -87,6 +87,8 @@ app.use(shoe);
 //STATIC PUBLIC
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//SETING PORT SERVER
 server.listen(app.get('port') , () => {
     console.log('SERVER RUNNING: ', app.get('port'));
 })

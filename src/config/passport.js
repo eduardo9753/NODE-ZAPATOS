@@ -12,7 +12,7 @@ const pool = require('../database/database');
 
 //LOGEO DEL USUARIO YA REGISTRADO (2)
 passport.use('local.signin' , new LocalStrategy({
-    usernameField : 'email',//nombre del input
+    usernameField : 'email',   //nombre del input
     passwordField : 'password',//nombre del input
     passReqToCallback: true  
 } , async (req , email , password , done) => {
@@ -59,20 +59,10 @@ passport.use('local.signup' , new LocalStrategy({
 
 passport.serializeUser((user , done) => {//SERIALIZASER GUARDA EL ID DEL USUARIO EN LA APLICACION
     console.log('serializar:' , user);
-    done(null , user.id);//EL ID DE TU TABLA DE LA BASE DE DATOS "ponlo id => como nombre"
+    done(null , user.id);
 });
 
 passport.deserializeUser( async (id , done) => {//TOMO ESE ID QUE SE ALMACENO PARA RETORNAR DATOS
     const rows = await pool.query('SELECT * FROM dboUsuarios WHERE id=?' , [id]);
     done(null , rows[0]);
 });
-
-/*passport.serializeUser((user, done) => {
-    console.log('SERIALIZEUSER: ' , user);
-    done(null, user);
-});
-  
-passport.deserializeUser((user, done) => {
-    console.log('DESERIALIZEUSER: ' , user);
-    done(null, user);
-});*/

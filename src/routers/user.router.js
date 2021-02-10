@@ -5,18 +5,18 @@ const router = Router();
 const { isAuthenticated } = require('../lib/helpers');
 
 //CONTROLADOR USER
-const userController = require('../controllers/user.controller');
+const { signup , signupFormAdd ,profile , signin , signinFromAdd , exit} = require('../controllers/user.controller');
 
 
 //MANAEJO DE VISTAS
-router.get('/users/signup' , userController.signup);//VIEW FORM SIGNUP
-router.post('/users/signupForm' , userController.signupFormAdd);//RECOJO DE DATOS FORM SIGNUP
+router.get('/users/signup' , signup);//VIEW FORM SIGNUP
+router.post('/users/signupForm' , signupFormAdd);//RECOJO DE DATOS FORM SIGNUP
 
-router.get('/users/profile' , isAuthenticated , userController.profile);//VIEW DEL USER MENU
+router.get('/users/profile' , isAuthenticated , profile);//VIEW DEL USER MENU
 
-router.get('/users/signin' , userController.signin);//VIEW FORM SIGNIN
-router.post('/users/signinForm' , userController.signinFromAdd);//REOCOJO DE DATOS FORM SIGNIN
+router.get('/users/signin' , signin);//VIEW FORM SIGNIN
+router.post('/users/signinForm' , signinFromAdd);//REOCOJO DE DATOS FORM SIGNIN
 
-router.get('/users/logout' , userController.exit);//SALIDA DEL USERS
+router.get('/users/logout' , exit);//SALIDA DEL USERS
 
 module.exports = router;

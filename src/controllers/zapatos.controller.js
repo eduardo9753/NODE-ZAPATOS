@@ -166,7 +166,6 @@ class zapatoController {
         } catch (error) {
             console.log(error);
         }
-
     }
 }
 

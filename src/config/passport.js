@@ -42,14 +42,16 @@ passport.use('local.signup' , new LocalStrategy({
 } , async (req , username , password , done) => {
      console.log('DATA FORM SIGNUP' , req.body);
      const user = new User();
-     user.setEmail = req.body.email;
+     user.setEmail  = req.body.email;
      user.setNombre = username;
-     user.setPass = password;
+     user.setPass   = password;
      const passCrypt = await helpers.encryptPass(user.getPass);
      const resultado = await pool.query('INSERT INTO dboUsuarios(email,pass,nombre) VALUES(?,?,?)' ,
                                               [user.getEmail , passCrypt , user.getNombre]);
     if(resultado){
-        user.setIdUser = resultado.insertId;//ASIGNACION DE ID USER DESDE LA BD PARA LA SEESION
+        user.setIdUser = resultado.insertId; //ASIGNACION DE ID USER DESDE LA BD PARA LA SEESION
+        console.log('DATA RESULTADO : ' , resultado);
+        console.log('DATA USER PASSPORT: ' , user);
         return done(null , user , req.flash('message_success' , 'REGISTER CORRECTERD'));
     }else{
         req.flash('message_danger' , 'REGISTER INCORRECTERD');
@@ -64,5 +66,6 @@ passport.serializeUser((user , done) => {//SERIALIZASER GUARDA EL ID DEL USUARIO
 
 passport.deserializeUser( async (id , done) => {//TOMO ESE ID QUE SE ALMACENO PARA RETORNAR DATOS
     const rows = await pool.query('SELECT * FROM dboUsuarios WHERE id=?' , [id]);
+    console.log('deserializar:' , rows[0]);
     done(null , rows[0]);
 });

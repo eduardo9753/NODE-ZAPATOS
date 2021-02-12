@@ -2,7 +2,7 @@ const express        = require('express');
 const morgan         = require('morgan');
 const session        = require('express-session');
 const flash          = require('connect-flash');
-const MySQLStore     = require('express-mysql-session');
+const MySQLStore     = require('express-mysql-session')(session);
 const methodOverride = require('method-override');
 const multer         = require('multer');
 const exphbs         = require('express-handlebars');
@@ -18,7 +18,7 @@ const index          = require('./routers/index.router');
 const user           = require('./routers/user.router');
 const shoe           = require('./routers/zapatos.router');
 const { database }   = require('./database/keys');
-require('./config/passport');//PARA VER EL MENSAJE DE LA BASE DE DATOS LLAMAMOS A POOL
+require('./config/passport'); //PARA VER EL MENSAJE DE LA BASE DE DATOS LLAMAMOS A POOL
 const { isAuthenticated , timeago } = require('./lib/helpers');
 const { firtPagina , paginationCliente , paginationUser , lastPagina } = require('./lib/handlebars');
 
@@ -44,9 +44,9 @@ app.set('view engine' , '.hbs');
 
 
 //MIDDLEWARES
-app.use(methodOverride('_method'));//PUT Y DELETE
+app.use(methodOverride('_method'));   //PUT Y DELETE
 app.use(express.urlencoded({ extended : false }));
-app.use(morgan('dev'));//PETICIONES
+app.use(morgan('dev'));               //PETICIONES
 app.use(express.json());
 app.use(session({
     secret : 'secret',
@@ -54,9 +54,9 @@ app.use(session({
     saveUninitialized : false,
     store  : new MySQLStore(database)//GUARDAMOS LA SESSION DEL USUARIO DE LA BD 
 }));
-app.use(passport.initialize());//INICIANDO PASSPORT
-app.use(passport.session());   //INICIANDO PASSPORT
-app.use(flash());//PARA LOS MENSAJES
+app.use(passport.initialize());      //INICIANDO PASSPORT
+app.use(passport.session());         //INICIANDO PASSPORT
+app.use(flash());                    //PARA LOS MENSAJES
 
 const storeZapato = multer.diskStorage({
     destination : path.join(__dirname , '/public/Uploads/'),

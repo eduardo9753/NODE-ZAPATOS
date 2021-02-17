@@ -17,18 +17,18 @@ class zapatoController {
             console.log('DATA SHOES : ', req.file);
             console.log('DATA USER:', req.user);
             const zapato = new Zapato();
-            zapato.setFoto = req.file.originalname;    //NOMBRE DE LA FOTO 
+            zapato.setFoto = req.file.originalname;        //NOMBRE DE LA FOTO 
             zapato.setMimetype = req.file.mimetype;        //TIPO DE FOTO O IMG
-            zapato.setFilename = req.file.filename;        //NOMBRE ENCRYPTADO
+            zapato.setFilename = req.file.filename;        //NOMBRE ENCRYPTADO CON UUID
             zapato.setPath = 'Uploads/' + req.file.filename;//CUANDO SE RECORRA LAS IMG BUSCARA ESTA RUTA DEL "PATH"
-            zapato.setSize = req.file.size;            //TAMAÑO DE LA FOTO
-            zapato.setPrecio = req.body.precio;          //CAJA DE TEXTO
-            zapato.setColor = req.body.color;           //CAJA DE TEXTO
-            zapato.setCantidad = req.body.cantidad;        //CAJA DE TEXTO
-            zapato.setDBOEstilo = req.body.cboEstilo;       //CAJA DE TEXTO
-            zapato.setDBOTalla = req.body.cboTalla;        //CAJA DE TEXTO
-            zapato.setDBOGenero = req.body.cboGenero;       //CAJA DE TEXTO
-            zapato.setIdUsuario = req.user.id;              //ID DEL USUARIO LOGEADO
+            zapato.setSize = req.file.size;           
+            zapato.setPrecio = req.body.precio;         
+            zapato.setColor = req.body.color;          
+            zapato.setCantidad = req.body.cantidad;        
+            zapato.setDBOEstilo = req.body.cboEstilo;      
+            zapato.setDBOTalla = req.body.cboTalla;       
+            zapato.setDBOGenero = req.body.cboGenero;      
+            zapato.setIdUsuario = req.user.id;             
             const correct = await pool.query('INSERT INTO dbozapato(foto,mimetype,filename,path,size,precio,color,cantidad,user_id,dboestilo_id,dbotalla_id,dbogenero_id)  VALUES(?,?,?,?,?,?,?,?,?,?,?,?)',
                 [zapato.getFoto, zapato.getMimetype, zapato.getFilename, zapato.getPath, zapato.getSize, zapato.getPrecio, zapato.getColor,
                 zapato.getCantidad, zapato.getIdUsuario, zapato.getDBOEstilo, zapato.getDBOTalla, zapato.getDBOGenero]);
@@ -66,19 +66,19 @@ class zapatoController {
             const { id } = req.params;
             const zapato = new Zapato();
             if (typeof req.file !== 'undefined') {
-                zapato.setFoto = req.file.originalname;  //NOMBRE DE LA FOTO DE LA IMG
+                zapato.setFoto = req.file.originalname;      //NOMBRE DE LA FOTO DE LA IMG
                 zapato.setMimetype = req.file.mimetype;      //TIPO DE FOTO O IMG
                 zapato.setFilename = req.file.filename;      //NOMBRE ENCRYPTADO DE LA IMG
                 zapato.setPath = 'Uploads/' + req.file.filename;//CUANDO SE RECORRA LAS IMG BUSCARA ESTA RUTA DEL "PATH"
-                zapato.setSize = req.file.size;          //VALOR REQ.FILE :tamano de la img : 345kv
-                zapato.setPrecio = req.body.precio;        //CAJA DE TEXTO
-                zapato.setColor = req.body.color;         //CAJA DE TEXTO
-                zapato.setCantidad = req.body.cantidad;      //CAJA DE TEXTO
-                zapato.setDBOEstilo = req.body.cboEstilo;     //CAJA DE TEXTO
-                zapato.setDBOTalla = req.body.cboTalla;      //CAJA DE TEXTO
-                zapato.setDBOGenero = req.body.cboGenero;     //CAJA DE TEXTO
-                zapato.setIdUsuario = req.user.id;            //ID DEL USUARIO LOGEADO
-                zapato.setIdZapato = id;                     //ID DEL ZAPATO UPDATE
+                zapato.setSize = req.file.size;              //VALOR REQ.FILE :tamano de la img : 345kv
+                zapato.setPrecio = req.body.precio;      
+                zapato.setColor = req.body.color;       
+                zapato.setCantidad = req.body.cantidad;     
+                zapato.setDBOEstilo = req.body.cboEstilo;    
+                zapato.setDBOTalla = req.body.cboTalla;     
+                zapato.setDBOGenero = req.body.cboGenero;     
+                zapato.setIdUsuario = req.user.id;           
+                zapato.setIdZapato = id;                    
                 const correct = await pool.query('UPDATE dbozapato SET foto=? , mimetype=? ,filename=? , path=? ,size=? ,precio=? ,color=? ,cantidad=? ,user_id=? ,dboestilo_id=? ,dbotalla_id=? ,dbogenero_id=? WHERE id=?',
                     [zapato.getFoto, zapato.getMimetype, zapato.getFilename, zapato.getPath, zapato.getSize, zapato.getPrecio, zapato.getColor,
                     zapato.getCantidad, zapato.getIdUsuario, zapato.getDBOEstilo, zapato.getDBOTalla, zapato.getDBOGenero, zapato.getIdZapato]);
